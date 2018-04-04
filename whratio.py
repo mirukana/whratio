@@ -16,6 +16,7 @@
 from __future__ import print_function
 
 import sys
+import textwrap
 
 __author__  = "ccc032"
 __license__ = "GPLv3"
@@ -39,7 +40,8 @@ def get_gcd(a, b):
 
 
 def main():
-    """Usage: whratio <width> <height>
+    """
+    Usage: whratio <width> <height>
     Print integer and decimal aspect ratio for the <width> and <height>.
 
     Options:
@@ -56,15 +58,14 @@ def main():
         Returns "64 27 2.37" (Also wrongly called "21:9").
 
       whratio.py 100 200 | cut -d' ' -f3
-        Get the 3rd value of "1 2 0.5" (decimal ratio 0.5) on POSIX systems.
-    """
+        Get the 3rd value of "1 2 0.5" (decimal ratio 0.5) on POSIX systems."""
 
     try:
         if sys.argv[1] in ("-h", "--help"):
-            print(main.__doc__)
+            print(textwrap.dedent(main.__doc__))
             sys.exit()
     except IndexError:
-        print(main.__doc__)
+        print(textwrap.dedent(main.__doc__))
         sys.exit(1)
 
     try:
