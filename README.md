@@ -1,4 +1,4 @@
- whratio
+# whratio
 
 Calculate integer and decimal aspect ratio for dimensions.
 
@@ -17,13 +17,7 @@ Calculate integer and decimal aspect ratio for dimensions.
 
 ## CLI Usage
 
-### Command
-
-    whratio <width> <height>
-
-### Options
-
-- **-h**, **--help**: Show help.
+    whratio [-h|--help] <width> <height>
 
 ### Examples
 
@@ -43,14 +37,12 @@ Get the 3rd value of `1 2 0.5` (decimal ratio *0.5*) on POSIX systems.
 
 Requires Python 2 or 3.
 
-Use `pip2`, `pip3`, `python2` or `python3` depending on your distribution.
+From **pip**:
 
-From pip:
-
-    pip install whratio
+    sudo pip install whratio
 
 Manually:
 
     git clone https://github.com/ccc032/whratio
     cd whratio
-    python setup.py
+    sudo python setup.py install
