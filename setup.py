@@ -13,7 +13,7 @@ setup(
     author_email = whratio.__email__,
     description  = whratio.__doc__,
     license      = whratio.__license__,
-    keywords     = "aspect ratio dimension width height image video",
+    keywords     = "calculate aspect ratio dimension width height image video",
     url          = "https://github.com/ccc032/whratio",
 
     entry_points = {

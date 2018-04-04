@@ -1,6 +1,6 @@
  whratio
 
-Get integer and decimal aspect ratio for a width and height.
+Calculate integer and decimal aspect ratio for dimensions.
 
 ## Python module usage example
 

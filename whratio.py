@@ -11,7 +11,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Get integer and decimal aspect ratio for a dimensions"""
+"""Calculate integer and decimal aspect ratio for dimensions."""
 
 from __future__ import print_function
 
