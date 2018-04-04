@@ -8,7 +8,6 @@ setup(
     version  = whratio.__version__,
     packages = find_packages(),
     scripts  = ["whratio.py"],
-    use_2to3 = True,
 
     author       = whratio.__author__,
     author_email = whratio.__email__,
