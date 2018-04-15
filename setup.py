@@ -6,8 +6,7 @@ import whratio
 setup(
     name       = whratio.__name__,
     version    = whratio.__version__,
-    packages   = find_packages(),
-    scripts    = ["whratio.py"],
+    py_modules = ["whratio"],
 
     author       = whratio.__author__,
     author_email = whratio.__email__,
