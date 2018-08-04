@@ -13,7 +13,7 @@ setup(
     description  = whratio.__doc__,
     license      = whratio.__license__,
     keywords     = "calculate aspect ratio dimension width height image video",
-    url          = "https://github.com/ccc032/whratio",
+    url          = "https://github.com/mirukan/whratio",
 
     entry_points = {
         "console_scripts": [
@@ -31,11 +31,10 @@ setup(
 
         "Topic :: Utilities",
 
-        "License :: OSI Approved :: GNU General Public License v3 "
-        "or later (GPLv3+)",
+        "License :: OSI Approved :: GNU Lesser General Public License v3 "
+        "or later (LGPLv3+)",
 
         "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.2",

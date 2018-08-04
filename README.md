@@ -54,7 +54,7 @@ From **pip**:
 Manually:
 
 ```sh
-    git clone https://github.com/ccc032/whratio
+    git clone https://github.com/mirukan/whratio
     cd whratio
     sudo python setup.py install
 ```
