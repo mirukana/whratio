@@ -1,5 +1,7 @@
 # whratio
 
+[![Downloads](http://pepy.tech/badge/whratio)](http://pepy.tech/project/whratio)
+
 Calculate integer and decimal aspect ratio for dimensions.
 
 ## Python module usage example
