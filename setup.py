@@ -1,23 +1,24 @@
 """whratio setuptools file"""
 
 from setuptools import setup
-import whratio
+import whratio as info
 
 setup(
-    name       = whratio.__name__,
-    version    = whratio.__version__,
-    py_modules = ["whratio"],
+    name        = info.PKG_NAME,
+    version     = info.__version__,
+    description = info.__doc__,
 
-    author       = whratio.__author__,
-    author_email = whratio.__email__,
-    description  = whratio.__doc__,
-    license      = whratio.__license__,
-    keywords     = "calculate aspect ratio dimension width height image video",
-    url          = "https://github.com/mirukan/whratio",
+    author       = info.__author__,
+    author_email = info.__email__,
+    license      = info.__license__,
 
+    keywords = "calculate aspect ratio dimension width height image video",
+    url      = "https://github.com/mirukan/%s" % info.PKG_NAME,
+
+    py_modules   = [info.PKG_NAME],
     entry_points = {
         "console_scripts": [
-            "whratio=whratio:main"
+            "%s=%s:main" % (info.PKG_NAME, info.PKG_NAME)
         ]
     },
 
@@ -31,8 +32,8 @@ setup(
 
         "Topic :: Utilities",
 
-        "License :: OSI Approved :: GNU Lesser General Public License v3 "
-        "or later (LGPLv3+)",
+        ("License :: OSI Approved :: "
+         "GNU Lesser General Public License v3 or later (LGPLv3+)"),
 
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 2.7",
