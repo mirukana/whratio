@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Copyright 2018 miruka
 
 # This program is free software: you can redistribute it and/or modify
@@ -18,11 +20,13 @@
 from __future__ import print_function
 
 import inspect
+import sys
 
 import docopt
 
 PKG_NAME    = "whratio"
-__version__ = "1.1.2"
+__version__ = "1.1.3"
+__status__  = "production"
 __author__  = "miruka"
 __email__   = "miruka@disroot.org"
 __license__ = "LGPLv3"
@@ -47,7 +51,7 @@ def get_gcd(a, b):
 
 
 def main():
-    """Usage: <NAME> WIDTH HEIGHT
+    """Usage: {name} WIDTH HEIGHT
 
     Print integer and decimal aspect ratio for the given numbers.
 
@@ -57,20 +61,27 @@ def main():
 
     Options:
       -h, --help     Show this help.
-      -V, --version  Show the program's version.
+      -V, --version  Show the program version.
 
     Examples:
-      <NAME> 1024 768
+      {name} 1024 768
         Return "4 3 1.33" (integer 4:3, decimal 1.33).
 
-      <NAME> 2560 1080
-        Return "64 27 2.37" (Also wrongly called "21:9").
+      {name} 2560 1080 | cut -d' ' -f3
+        Get the 3rd value of "64 27 2.37" (decimal ratio) on POSIX systems.
 
-      <NAME> 100 200 | cut -d' ' -f3
-        Get the 3rd value of "1 2 0.5" (decimal ratio 0.5) on POSIX systems.
+      {name} 1920 1080 | awk '{print $1":"$2}'
+	Format integer ratio as "16:9" on POSIX systems.
+
     """
-    doc  = inspect.cleandoc(main.__doc__).replace("<NAME>", PKG_NAME)
-    args = docopt.docopt(doc, version=__version__)
+    doc  = inspect.cleandoc(main.__doc__).replace("{name}", PKG_NAME)
+
+    try:
+        args = docopt.docopt(doc, version=__version__)
+    except docopt.DocoptExit:
+        print("Invalid command syntax", "\n")
+        print(doc)
+        sys.exit(1)
 
     width  = float(args["WIDTH"])
     height = float(args["HEIGHT"])
