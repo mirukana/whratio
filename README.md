@@ -4,7 +4,7 @@
 
 Calculate integer and decimal aspect ratio for dimensions.
 
-## Python module usage example
+## Python module examples
 
 ```python3
     >>> from whratio import *
@@ -19,29 +19,22 @@ Calculate integer and decimal aspect ratio for dimensions.
     (16, 9)
 ```
 
-## CLI Usage
-
-```sh
-    whratio [-h|--help] <width> <height>
-```
-### Examples
+## CLI examples
 
 ```sh
     whratio 1024 768
-
 ```
 Returns `4 3 1.33` (integer *4:3*, decimal *1.33*).
 
 ```sh
-    whratio 2560 1080
+    whratio 100 200 | cut -d' ' -f3
 ```
-Returns `64 27 2.37` (Also wrongly called "21:9").
+Get the 3rd value of `1 2 0.5` (decimal ratio *0.5*) on POSIX systems.
 
 ```sh
-    whratio.py 100 200 | cut -d' ' -f3
+    whratio 1920 1080 | awk '{print $1":"$2}'
 ```
-
-Get the 3rd value of `1 2 0.5` (decimal ratio *0.5*) on POSIX systems.
+Format integer ratio as `16:9` on POSIX systems.
 
 ## Installation
 
