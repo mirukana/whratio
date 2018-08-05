@@ -17,64 +17,63 @@
 
 from __future__ import print_function
 
-import sys
-import textwrap
+import inspect
 
+import docopt
+
+PKG_NAME    = "whratio"
+__version__ = "1.1.2"
 __author__  = "miruka"
 __email__   = "miruka@disroot.org"
 __license__ = "LGPLv3"
-__version__ = "1.1.1"
 
 
 def ratio_float(width, height, ndigits=2):
+    """Return a decimal ratio like 1.78"""
     return round(width / height, ndigits)
 
 
 def ratio_int(width, height):
+    """Return an integer ratio tuple like (16, 9)"""
     gcd = get_gcd(width, height)
     return int(width / gcd), int(height / gcd)
 
 
 def get_gcd(a, b):
+    """Return greatest common divisor for a and b"""
     while a:
         a, b = b % a, a
     return b
 
 
 def main():
-    """
-    Usage: whratio <width> <height>
-    Print integer and decimal aspect ratio for the <width> and <height>.
+    """Usage: <NAME> WIDTH HEIGHT
+
+    Print integer and decimal aspect ratio for the given numbers.
+
+    Arguments:
+      WIDTH   Width to calculate ratio for.
+      HEIGHT  Height to calculate ratio for.
 
     Options:
-
-      -h, --help
-        Show this help.
+      -h, --help     Show this help.
+      -V, --version  Show the program's version.
 
     Examples:
+      <NAME> 1024 768
+        Return "4 3 1.33" (integer 4:3, decimal 1.33).
 
-      whratio 1024 768
-        Returns "4 3 1.33" (integer 4:3, decimal 1.33).
+      <NAME> 2560 1080
+        Return "64 27 2.37" (Also wrongly called "21:9").
 
-      whratio 2560 1080
-        Returns "64 27 2.37" (Also wrongly called "21:9").
+      <NAME> 100 200 | cut -d' ' -f3
+        Get the 3rd value of "1 2 0.5" (decimal ratio 0.5) on POSIX systems.
+    """
+    doc  = inspect.cleandoc(main.__doc__).replace("<NAME>", PKG_NAME)
+    args = docopt.docopt(doc, version=__version__)
 
-      whratio.py 100 200 | cut -d' ' -f3
-        Get the 3rd value of "1 2 0.5" (decimal ratio 0.5) on POSIX systems."""
-
-    try:
-        if sys.argv[1] in ("-h", "--help"):
-            print(textwrap.dedent(main.__doc__))
-            sys.exit()
-    except IndexError:
-        print(textwrap.dedent(main.__doc__))
-        sys.exit(1)
-
-    try:
-        width  = float(sys.argv[1])
-        height = float(sys.argv[2])
-    except (IndexError, ValueError):
-        raise TypeError("Need two number arguments: width and height.")
+    width  = float(args["WIDTH"])
+    height = float(args["HEIGHT"])
 
     int_w, int_h = ratio_int(width, height)
     print(int_w, int_h, ratio_float(width, height))
