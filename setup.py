@@ -18,7 +18,7 @@ setup(
     long_description              = LONG_DESCRIPTION,
     long_description_content_type = "text/markdown",
 
-    python_requires = ">=2.7, >=3, <4",
+    python_requires = ">=2.7, <4",
     py_modules      = [info.PKG_NAME],
     entry_points    = {
         "console_scripts": [

@@ -25,7 +25,7 @@ import sys
 import docopt
 
 PKG_NAME    = "whratio"
-__version__ = "1.1.3"
+__version__ = "1.1.3_1"
 __status__  = "production"
 __author__  = "miruka"
 __email__   = "miruka@disroot.org"
