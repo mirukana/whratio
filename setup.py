@@ -3,24 +3,31 @@
 from setuptools import setup
 import whratio as info
 
+with open("README.md", "r") as readme:
+    LONG_DESCRIPTION = readme.read()
+
 setup(
     name        = info.PKG_NAME,
     version     = info.__version__,
-    description = info.__doc__,
 
     author       = info.__author__,
     author_email = info.__email__,
     license      = info.__license__,
 
-    keywords = "calculate aspect ratio dimension width height image video",
-    url      = "https://github.com/mirukan/%s" % info.PKG_NAME,
+    description                   = info.__doc__,
+    long_description              = LONG_DESCRIPTION,
+    long_description_content_type = "text/markdown",
 
-    py_modules   = [info.PKG_NAME],
-    entry_points = {
+    python_requires = ">=2.7, >=3, <4",
+    py_modules      = [info.PKG_NAME],
+    entry_points    = {
         "console_scripts": [
             "%s=%s:main" % (info.PKG_NAME, info.PKG_NAME)
         ]
     },
+
+    keywords = "calculate aspect ratio dimension width height image video",
+    url      = "https://github.com/mirukan/%s" % info.PKG_NAME,
 
     classifiers=[
         "Development Status :: 5 - Production/Stable",
