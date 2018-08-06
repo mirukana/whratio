@@ -19,6 +19,10 @@ setup(
     long_description_content_type = "text/markdown",
 
     python_requires = ">=2.7, <4",
+    install_requires = [
+        "docopt>=0.6"
+    ],
+
     py_modules      = [info.PKG_NAME],
     entry_points    = {
         "console_scripts": [
