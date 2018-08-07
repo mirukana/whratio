@@ -1,11 +1,8 @@
 # whratio
 
-[![PyPI downloads](http://pepy.tech/badge/whratio)](
-    http://pepy.tech/project/whratio)
-[![PyPI version](https://img.shields.io/pypi/v/whratio.svg)](
-    https://pypi.org/projects/whratio)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/whratio.svg)](
-    https://pypi.python.org/pypi/whratio)
+[![PyPI downloads](http://pepy.tech/badge/whratio)](https://pepy.tech/project/whratio)
+[![PyPI version](https://img.shields.io/pypi/v/whratio.svg)](https://pypi.python.org/pypi/whratio)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/whratio.svg)](https://pypi.python.org/pypi/whratio)
 
 Calculate integer and decimal aspect ratio for dimensions.
 
