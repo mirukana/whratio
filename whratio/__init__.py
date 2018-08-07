@@ -29,5 +29,8 @@ def die(sig_nbr=0, _=None):
     sys.exit(128 + sig_nbr)
 
 
-for sig in ("HUP", "INT", "QUIT", "TERM"):
-    signal.signal(getattr(signal, f"SIG{sig}"), die)
+try:
+    for sig in ("HUP", "INT", "QUIT", "TERM"):
+        signal.signal(getattr(signal, f"SIG{sig}"), die)
+except ValueError:  # We're imported from a thread
+    pass
