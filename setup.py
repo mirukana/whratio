@@ -53,7 +53,7 @@ setup(
         ]
     },
 
-    keywords = "<KEYWORDS>",
+    keywords = "calculate aspect ratio dimension width height image video",
     url      = f"https://github.com/mirukan/whratio",
 
     classifiers=[
