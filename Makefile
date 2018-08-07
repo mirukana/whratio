@@ -4,7 +4,7 @@
 PYTHON = python3
 PIP    = pip3
 
-ARCHIVE_FORMATS = bztar,zip
+ARCHIVE_FORMATS = gztar,zip
 INSTALL_FLAGS   = --user --editable
 
 .PHONY: all clean dist install upload test
