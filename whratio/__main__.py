@@ -47,7 +47,7 @@ def main():
     height   = float(args["HEIGHT"])
 
     as_int   = ratio.as_int(width, height)
-    ndigits  = int(args.get("--ndigits", 2))
+    ndigits  = int(args.get("--ndigits") or 2)
     as_float = ratio.as_float(width, height, ndigits=ndigits)
 
     to_print = []
