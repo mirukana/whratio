@@ -1,40 +1,63 @@
+# Copyright 2018 miruka
+# This file is part of whratio, licensed under LGPLv3.
+
 """whratio setuptools file"""
 
-from setuptools import setup
-import whratio as info
+import os
+from glob import iglob
 
-with open("README.md", "r") as readme:
-    LONG_DESCRIPTION = readme.read()
+from setuptools import setup
+
+from whratio import __about__
+
+
+def find_modules():
+    for item in iglob(f"{__about__.__pkg_name__}/**/*.py", recursive=True):
+        dirs, file = os.path.split(item)
+        name, ext  = os.path.splitext(file)
+        subdirs    = dirs.split(os.sep)[1:]
+
+        if subdirs and ext == ".py":
+            yield ".".join(subdirs + [name])
+        elif ext == ".py":
+            yield name
+
+
+def get_readme():
+    with open("README.md", "r") as readme:
+        return readme.read()
+
 
 setup(
-    name        = info.PKG_NAME,
-    version     = info.__version__,
+    name        = __about__.__pkg_name__,
+    version     = __about__.__version__,
 
-    author       = info.__author__,
-    author_email = info.__email__,
-    license      = info.__license__,
+    author       = __about__.__author__,
+    author_email = __about__.__email__,
+    license      = __about__.__license__,
 
-    description                   = info.__doc__,
-    long_description              = LONG_DESCRIPTION,
+    description                   = __about__.__doc__,
+    long_description              = get_readme(),
     long_description_content_type = "text/markdown",
 
-    python_requires = ">=2.7, <4",
+    python_requires  = ">=3.6, <4",
     install_requires = [
-        "docopt>=0.6"
+        "docopt",
+        "blessings"
     ],
 
-    py_modules      = [info.PKG_NAME],
+    py_modules      = list(find_modules()),
     entry_points    = {
         "console_scripts": [
-            "%s=%s:main" % (info.PKG_NAME, info.PKG_NAME)
+            "{0}={0}.__main__:main".format(__about__.__pkg_name__)
         ]
     },
 
-    keywords = "calculate aspect ratio dimension width height image video",
-    url      = "https://github.com/mirukan/%s" % info.PKG_NAME,
+    keywords = "<KEYWORDS>",
+    url      = f"https://github.com/mirukan/whratio",
 
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "5:Development Status :: 5 - Production/Stable",
 
         "Intended Audience :: Developers",
         "Intended Audience :: End Users/Desktop",
@@ -46,13 +69,8 @@ setup(
         ("License :: OSI Approved :: "
          "GNU Lesser General Public License v3 or later (LGPLv3+)"),
 
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.6",
 
         "Natural Language :: English",

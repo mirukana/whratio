@@ -1,55 +1,50 @@
 # whratio
 
-[![Downloads](http://pepy.tech/badge/whratio)](http://pepy.tech/project/whratio)
+[![PyPI downloads](http://pepy.tech/badge/whratio)](
+    http://pepy.tech/project/whratio)
+[![PyPI version](https://img.shields.io/pypi/v/whratio.svg)](
+    https://pypi.org/projects/whratio)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/whratio.svg)](
+    https://pypi.python.org/pypi/whratio)
 
 Calculate integer and decimal aspect ratio for dimensions.
-
-## Python module examples
-
-```python3
-    >>> from whratio import *
-
-    >>> ratio_float(640, 480)
-    1.33
-
-    >>> ratio_float(1920, 1080, ndigits=4)
-    1.7778
-
-    >>> ratio_int(1920, 1080)
-    (16, 9)
-```
 
 ## CLI examples
 
 ```sh
-    whratio 1024 768
+    $ whratio 1024 768
+    4 3 1.33
 ```
-Returns `4 3 1.33` (integer *4:3*, decimal *1.33*).
 
 ```sh
-    whratio 100 200 | cut -d' ' -f3
+    $ whratio -d -n6 256 196
+    1.306122
 ```
-Get the 3rd value of `1 2 0.5` (decimal ratio *0.5*) on POSIX systems.
 
 ```sh
-    whratio 1920 1080 | awk '{print $1":"$2}'
+    whratio -WH 2560 1080 | tr " " :
+    64:27
 ```
-Format integer ratio as `16:9` on POSIX systems.
+
+## Python package examples
+
+```python3
+    >>> from whratio import ratio
+
+    >>> ratio.as_int(1920, 1080)
+    (16, 9)
+
+    >>> ratio.as_float(1920, 1080)
+    1.77
+
+    >>> ratio.as_float(1920, 1080, ndigits=4)
+    1.7778
+```
 
 ## Installation
 
-Requires Python 2 or 3.
-
-From **pip**:
+Using [pip](https://pip.pypa.io/en/stable/installing/):
 
 ```sh
-    sudo pip install whratio
-```
-
-Manually:
-
-```sh
-    git clone https://github.com/mirukan/whratio
-    cd whratio
-    sudo python setup.py install
+    # pip3 install whratio
 ```

@@ -3,7 +3,7 @@
 # A comma-separated list of package or module names from where C extensions may
 # be loaded. Extensions are loading into the active Python interpreter and may
 # run arbitrary code
-extension-pkg-whitelist=
+extension-pkg-whitelist=ujson
 
 # Add files or directories to the blacklist. They should be base names, not
 # paths.
@@ -55,8 +55,10 @@ confidence=
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 #
+# C0111: Allow lack of literal """docstring""" (e.g. if assigning __doc__)
 # C0326: Allow aligning things like variable assignements
-disable=C0326
+# C0412: Remove annoying "imports are not grouped" because of :Isort with from
+disable=C0111,C0326,C0412
 
 # (useful for modules/projects where namespaces are manipulated during runtime
 # and thus existing member attributes cannot be deduced by static analysis. It
@@ -178,12 +180,7 @@ attr-naming-style=snake_case
 #attr-rgx=
 
 # Bad variable names which should always be refused, separated by a comma
-bad-names=foo,
-          bar,
-          baz,
-          toto,
-          tutu,
-          tata,
+bad-names=
 
 # Naming style matching correct class attribute names
 class-attribute-naming-style=any
@@ -217,21 +214,7 @@ function-naming-style=snake_case
 #function-rgx=
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=a,
-           b,
-           i,
-           j,
-           k,
-           v,
-           ex,
-           Run,
-           _,
-           x,
-           y,
-           z,
-           t1,
-           t2,
-           ip
+good-names= _, a, b, i, j, k, v, x, y, z
 
 # Include a hint for the correct naming format with invalid-name
 include-naming-hint=no
@@ -274,7 +257,7 @@ variable-naming-style=snake_case
 
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style
-#variable-rgx=
+variable-rgx=[a-z0-9_]{2,30}$
 
 
 [IMPORTS]
@@ -370,3 +353,7 @@ valid-metaclass-classmethod-first-arg=mcs
 # Exceptions that will emit a warning when being caught. Defaults to
 # "Exception"
 overgeneral-exceptions=Exception
+
+
+[TYPECHECK]
+generated-members=sh
