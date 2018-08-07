@@ -57,7 +57,7 @@ setup(
     url      = f"https://github.com/mirukan/whratio",
 
     classifiers=[
-        "5:Development Status :: 5 - Production/Stable",
+        "Development Status :: 5 - Production/Stable",
 
         "Intended Audience :: Developers",
         "Intended Audience :: End Users/Desktop",
