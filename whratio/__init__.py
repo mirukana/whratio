@@ -24,13 +24,13 @@ def ratio_float(*args, **kwargs):
     return ratio.as_float(*args, **kwargs)
 
 
-def die(sig_nbr=0, _=None):
+def _die(sig_num, **_):
     """Exit on process signal without traceback"""
-    sys.exit(128 + sig_nbr)
+    sys.exit(128 + sig_num)
 
 
 try:
     for sig in ("HUP", "INT", "QUIT", "TERM"):
-        signal.signal(getattr(signal, f"SIG{sig}"), die)
+        signal.signal(getattr(signal, f"SIG{sig}"), _die)
 except ValueError:  # We're imported from a thread
     pass
