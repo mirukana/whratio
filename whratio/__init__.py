@@ -24,7 +24,7 @@ def ratio_float(*args, **kwargs):
     return ratio.as_float(*args, **kwargs)
 
 
-def _die(sig_num, **_):
+def _die(sig_num, *_):
     """Exit on process signal without traceback"""
     sys.exit(128 + sig_num)
 

@@ -3,24 +3,9 @@
 
 """whratio setuptools file"""
 
-import os
-from glob import iglob
-
-from setuptools import setup
+from setuptools import setup, find_packages
 
 from whratio import __about__
-
-
-def find_modules():
-    for item in iglob(f"{__about__.__pkg_name__}/**/*.py", recursive=True):
-        dirs, file = os.path.split(item)
-        name, ext  = os.path.splitext(file)
-        subdirs    = dirs.split(os.sep)[1:]
-
-        if subdirs and ext == ".py":
-            yield ".".join(subdirs + [name])
-        elif ext == ".py":
-            yield name
 
 
 def get_readme():
@@ -46,7 +31,7 @@ setup(
         "blessings"
     ],
 
-    py_modules      = list(find_modules()),
+    py_modules      = find_packages(),
     entry_points    = {
         "console_scripts": [
             "{0}={0}.__main__:main".format(__about__.__pkg_name__)
@@ -72,6 +57,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
 
         "Natural Language :: English",
 
