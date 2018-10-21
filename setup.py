@@ -25,7 +25,7 @@ setup(
     long_description              = get_readme(),
     long_description_content_type = "text/markdown",
 
-    python_requires  = ">=3.6, <4",
+    python_requires  = ">=3.5, <4",
     install_requires = [
         "docopt",
         "blessings"
@@ -56,6 +56,7 @@ setup(
 
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
 
