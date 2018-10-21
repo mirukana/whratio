@@ -3,25 +3,10 @@
 
 import signal
 import sys
-import warnings
 
 from . import __about__, ratio
 
 __doc__ = __about__.__doc__
-
-warnings.simplefilter('always', DeprecationWarning)
-
-
-def ratio_int(*args, **kwargs):
-    warnings.warn("Replaced in >=v2.0.0, use whratio.ratio.as_int instead.",
-                  DeprecationWarning)
-    return ratio.as_int(*args, **kwargs)
-
-
-def ratio_float(*args, **kwargs):
-    warnings.warn("Replaced in >=v2.0.0, use whratio.ratio.as_float instead.",
-                  DeprecationWarning)
-    return ratio.as_float(*args, **kwargs)
 
 
 def _die(sig_num, *_):
