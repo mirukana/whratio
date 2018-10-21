@@ -14,7 +14,6 @@ Options:
   -W, --int-width        Print the integer ratio width.
   -H, --int-height       Print the integer ratio height.
   -d, --decimal          Print the decimal ratio.
-  -n NUM, --ndigits NUM  Digits for rounded decimal ratio, default is 2.
 
   -h, --help     Show this help.
   -V, --version  Show the program version."""
@@ -24,11 +23,11 @@ import sys
 import blessings
 import docopt
 
-from . import __about__, ratio
+from . import __about__, as_float, as_int
 
 
 def main():
-    """Process CLI arguments and call appropriate functions."""
+    "Process CLI arguments and call appropriate functions."
     term = blessings.Terminal()
 
     try:
@@ -46,20 +45,19 @@ def main():
     width    = float(args["WIDTH"])
     height   = float(args["HEIGHT"])
 
-    as_int   = ratio.as_int(width, height)
-    ndigits  = int(args.get("--ndigits") or 2)
-    as_float = ratio.as_float(width, height, ndigits=ndigits)
+    as_int_   = as_int(width, height)
+    as_float_ = as_float(width, height)
 
     to_print = []
 
     if args["--int-width"] or print_all:
-        to_print.append(term.blue(str(as_int[0])))
+        to_print.append(term.blue(str(as_int_[0])))
 
     if args["--int-height"] or print_all:
-        to_print.append(term.blue(str(as_int[1])))
+        to_print.append(term.blue(str(as_int_[1])))
 
     if args["--decimal"] or print_all:
-        to_print.append(term.magenta(f"%0.{ndigits}f" % as_float))
+        to_print.append(term.magenta(str(as_float_)))
 
     print(" ".join(to_print))
 

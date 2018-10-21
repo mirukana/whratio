@@ -10,12 +10,12 @@ Calculate integer and decimal aspect ratio for dimensions.
 
 ```sh
     $ whratio 1024 768
-    4 3 1.33
+    4 3 1.3333333333333333
 ```
 
 ```sh
-    $ whratio -d -n6 256 196
-    1.306122
+    $ whratio -d 256 196
+    1.3061224489795917
 ```
 
 ```sh
@@ -26,16 +26,13 @@ Calculate integer and decimal aspect ratio for dimensions.
 ## Python package examples
 
 ```python3
-    >>> from whratio import ratio
+    >>> import whratio
 
-    >>> ratio.as_int(1920, 1080)
+    >>> whratio.as_int(1920, 1080)
     (16, 9)
 
-    >>> ratio.as_float(1920, 1080)
-    1.77
-
-    >>> ratio.as_float(1920, 1080, ndigits=4)
-    1.7778
+    >>> whratio.as_float(1920, 1080)
+    1.7777777777777777
 ```
 
 ## Installation
