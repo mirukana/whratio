@@ -14,8 +14,8 @@ Calculate integer and decimal aspect ratio for dimensions.
 ```
 
 ```sh
-    $ whratio -d 256 196
-    1.3061224489795917
+    $ whratio -d -n 2 256 196
+    1.31
 ```
 
 ```sh
@@ -33,6 +33,9 @@ Calculate integer and decimal aspect ratio for dimensions.
 
     >>> whratio.as_float(1920, 1080)
     1.7777777777777777
+
+    >>> round(whratio.as_float(1920, 1080), 2)
+    1.78
 ```
 
 ## Installation

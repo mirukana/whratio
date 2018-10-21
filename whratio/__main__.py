@@ -14,6 +14,7 @@ Options:
   -W, --int-width        Print the integer ratio width.
   -H, --int-height       Print the integer ratio height.
   -d, --decimal          Print the decimal ratio.
+  -n NUM, --ndigits NUM  Round decimal ratio to NUM numbers.
 
   -h, --help     Show this help.
   -V, --version  Show the program version."""
@@ -47,6 +48,9 @@ def main():
 
     as_int_   = as_int(width, height)
     as_float_ = as_float(width, height)
+
+    if args["--ndigits"]:
+        as_float_ = round(as_float_, int(args["--ndigits"]))
 
     to_print = []
 
