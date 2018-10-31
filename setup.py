@@ -1,7 +1,7 @@
 # Copyright 2018 miruka
 # This file is part of whratio, licensed under LGPLv3.
 
-"""whratio setuptools file"""
+"whratio setuptools file"
 
 from setuptools import setup, find_packages
 
@@ -31,7 +31,7 @@ setup(
         "blessings"
     ],
 
-    py_modules      = find_packages(),
+    packages        = find_packages(),
     entry_points    = {
         "console_scripts": [
             "{0}={0}.__main__:main".format(__about__.__pkg_name__)
