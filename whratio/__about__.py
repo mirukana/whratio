@@ -4,7 +4,7 @@
 "Calculate integer and decimal aspect ratio for dimensions."
 
 __pkg_name__ = "whratio"
-__version__  = "3.1.0"
+__version__  = "3.1.1"
 __status__   = "Production"
 
 __author__   = "miruka"

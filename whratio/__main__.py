@@ -21,21 +21,23 @@ Options:
 
 import sys
 
-import blessings
 import docopt
+import colorama
+from colorama import Fore
 
 from . import __about__, as_float, as_int
+
+colorama.init()
 
 
 def main():
     "Process CLI arguments and call appropriate functions."
-    term = blessings.Terminal()
-
     try:
         args = docopt.docopt(__doc__, version=__about__.__version__)
     except docopt.DocoptExit:
         if len(sys.argv) > 1:
-            print(term.red("Invalid command syntax, check help:\n"))
+            print(f"{Fore.RED}Invalid command syntax, "
+                  f"check help:{Fore.RESET}\n")
         print(__doc__)
         sys.exit(1)
 
@@ -55,13 +57,13 @@ def main():
     to_print = []
 
     if args["--int-width"] or print_all:
-        to_print.append(term.blue(str(as_int_[0])))
+        to_print.append(f"{Fore.BLUE}{as_int_[0]!s}")
 
     if args["--int-height"] or print_all:
-        to_print.append(term.blue(str(as_int_[1])))
+        to_print.append(f"{Fore.BLUE}{as_int_[1]!s}")
 
     if args["--decimal"] or print_all:
-        to_print.append(term.magenta(str(as_float_)))
+        to_print.append(f"{Fore.MAGENTA}{as_float_!s}")
 
     print(" ".join(to_print))
 

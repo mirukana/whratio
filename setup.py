@@ -27,8 +27,8 @@ setup(
 
     python_requires  = ">=3.5, <4",
     install_requires = [
+        "colorama",
         "docopt",
-        "blessings"
     ],
 
     packages        = find_packages(),
